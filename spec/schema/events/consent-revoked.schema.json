@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/events/consent-revoked.schema.json",
+  "allOf": [
+    { "$ref": "./event-base.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "eventType": { "const": "consent_revoked" },
+        "payload": { "$ref": "#/$defs/ConsentRevokedPayload" }
+      },
+      "required": ["payload"]
+    }
+  ],
+  "$defs": {
+    "ConsentRevokedPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subjectId", "grantedEventId", "mechanism", "evidence"],
+      "properties": {
+        "subjectId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "grantedEventId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "mechanism": {
+          "$ref": "../shared/enums.schema.json#/$defs/Mechanism"
+        },
+        "evidence": {
+          "$ref": "../shared/evidence.schema.json"
+        }
+      }
+    }
+  }
+}
