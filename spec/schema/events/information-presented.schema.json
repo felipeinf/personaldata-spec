@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/events/information-presented.schema.json",
+  "allOf": [
+    { "$ref": "./event-base.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "eventType": { "const": "information_presented" },
+        "payload": { "$ref": "#/$defs/InformationPresentedPayload" }
+      },
+      "required": ["payload"]
+    }
+  ],
+  "$defs": {
+    "InformationPresentedPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subjectId", "policyVersionId", "presentedAt", "contentHash"],
+      "properties": {
+        "subjectId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "policyVersionId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "presentedAt": {
+          "$ref": "../shared/primitives.schema.json#/$defs/IsoDateTime"
+        },
+        "contentHash": {
+          "$ref": "../shared/hash.schema.json#/$defs/Sha256Hex"
+        }
+      }
+    }
+  }
+}
