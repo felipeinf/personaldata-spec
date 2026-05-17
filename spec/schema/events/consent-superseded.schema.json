@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/events/consent-superseded.schema.json",
+  "allOf": [
+    { "$ref": "./event-base.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "eventType": { "const": "consent_superseded" },
+        "payload": { "$ref": "#/$defs/ConsentSupersededPayload" }
+      },
+      "required": ["payload"]
+    }
+  ],
+  "$defs": {
+    "ConsentSupersededPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subjectId", "previousGrantedEventId", "newGrantedEventId"],
+      "properties": {
+        "subjectId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "previousGrantedEventId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "newGrantedEventId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        }
+      }
+    }
+  }
+}
