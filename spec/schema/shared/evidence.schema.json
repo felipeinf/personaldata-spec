@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/shared/evidence.schema.json",
+  "type": "object",
+  "required": ["recordedAt", "contentHash"],
+  "properties": {
+    "recordedAt": {
+      "$ref": "primitives.schema.json#/$defs/IsoDateTime"
+    },
+    "contentHash": {
+      "$ref": "hash.schema.json#/$defs/Sha256Hex"
+    }
+  },
+  "additionalProperties": true
+}
