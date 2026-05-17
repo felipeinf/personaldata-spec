@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/events/event-base.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "sequenceNumber",
+    "controllerId",
+    "timestamp",
+    "prevEventHash",
+    "payloadHash",
+    "currentHash",
+    "payload"
+  ],
+  "properties": {
+    "eventId": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "eventType": {
+      "$ref": "../shared/enums.schema.json#/$defs/EventType"
+    },
+    "sequenceNumber": {
+      "$ref": "../shared/primitives.schema.json#/$defs/SequenceNumber"
+    },
+    "controllerId": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "timestamp": {
+      "$ref": "../shared/primitives.schema.json#/$defs/IsoDateTime"
+    },
+    "prevEventHash": {
+      "$ref": "../shared/hash.schema.json#/$defs/PrevEventHash"
+    },
+    "payloadHash": {
+      "$ref": "../shared/hash.schema.json#/$defs/Sha256Hex"
+    },
+    "currentHash": {
+      "$ref": "../shared/hash.schema.json#/$defs/Sha256Hex"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}
