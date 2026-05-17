@@ -1,0 +1,11 @@
+{
+  "name": "@personaldata/spec",
+  "version": "0.1.0",
+  "description": "JSON Schemas and normative docs for consent traceability (Law 21.719)",
+  "type": "module",
+  "files": ["schema", "docs", "scripts"],
+  "exports": {
+    "./package.json": "./package.json",
+    "./schema/*": "./schema/*"
+  }
+}
