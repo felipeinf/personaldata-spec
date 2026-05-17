@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/shared/primitives.schema.json",
+  "$defs": {
+    "Uuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "IsoDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?Z$"
+    },
+    "Slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "Iso8601Duration": {
+      "type": "string",
+      "pattern": "^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+S)?)?$"
+    },
+    "SequenceNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "PurposeVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "PurposeReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purposeId", "purposeVersion"],
+      "properties": {
+        "purposeId": { "$ref": "#/$defs/Uuid" },
+        "purposeVersion": { "$ref": "#/$defs/PurposeVersion" }
+      }
+    },
+    "VersionReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "$ref": "#/$defs/Uuid" },
+        "version": { "$ref": "#/$defs/PurposeVersion" }
+      }
+    }
+  }
+}
