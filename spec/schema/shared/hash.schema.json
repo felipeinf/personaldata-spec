@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/shared/hash.schema.json",
+  "$defs": {
+    "Sha256Hex": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "PrevEventHash": {
+      "oneOf": [
+        { "$ref": "#/$defs/Sha256Hex" },
+        { "type": "null" }
+      ]
+    },
+    "PrevHash": {
+      "oneOf": [
+        { "$ref": "#/$defs/Sha256Hex" },
+        { "const": "GENESIS" }
+      ]
+    }
+  }
+}
