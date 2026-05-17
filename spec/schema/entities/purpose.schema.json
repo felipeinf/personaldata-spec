@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/entities/purpose.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "controllerId",
+    "name",
+    "displayName",
+    "description",
+    "dataCategories",
+    "retention",
+    "legalBasis",
+    "status",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "version": {
+      "$ref": "../shared/primitives.schema.json#/$defs/PurposeVersion"
+    },
+    "controllerId": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "name": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Slug"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "dataCategories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      }
+    },
+    "retention": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "duration"],
+          "properties": {
+            "kind": { "const": "fixed" },
+            "duration": {
+              "$ref": "../shared/primitives.schema.json#/$defs/Iso8601Duration"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "description"],
+          "properties": {
+            "kind": { "const": "conditional" },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        }
+      ]
+    },
+    "legalBasis": {
+      "$ref": "../shared/enums.schema.json#/$defs/LegalBasis"
+    },
+    "status": {
+      "$ref": "../shared/enums.schema.json#/$defs/PurposeStatus"
+    },
+    "createdAt": {
+      "$ref": "../shared/primitives.schema.json#/$defs/IsoDateTime"
+    },
+    "supersedes": {
+      "$ref": "../shared/primitives.schema.json#/$defs/VersionReference"
+    }
+  }
+}
