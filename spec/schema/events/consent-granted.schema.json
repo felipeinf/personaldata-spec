@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/events/consent-granted.schema.json",
+  "allOf": [
+    { "$ref": "./event-base.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "eventType": { "const": "consent_granted" },
+        "payload": { "$ref": "#/$defs/ConsentGrantedPayload" }
+      },
+      "required": ["payload"]
+    }
+  ],
+  "$defs": {
+    "ConsentGrantedPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subjectId",
+        "purposeId",
+        "purposeVersion",
+        "policyVersionId",
+        "mechanism",
+        "evidence"
+      ],
+      "properties": {
+        "subjectId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "purposeId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "purposeVersion": {
+          "$ref": "../shared/primitives.schema.json#/$defs/PurposeVersion"
+        },
+        "policyVersionId": {
+          "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+        },
+        "mechanism": {
+          "$ref": "../shared/enums.schema.json#/$defs/Mechanism"
+        },
+        "evidence": {
+          "$ref": "../shared/evidence.schema.json"
+        }
+      }
+    }
+  }
+}
