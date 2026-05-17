@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personaldata.dev/schemas/v0/entities/policy-version.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "controllerId",
+    "purposes",
+    "publishedAt",
+    "informationBlock"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "controllerId": {
+      "$ref": "../shared/primitives.schema.json#/$defs/Uuid"
+    },
+    "purposes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../shared/primitives.schema.json#/$defs/PurposeReference"
+      }
+    },
+    "publishedAt": {
+      "$ref": "../shared/primitives.schema.json#/$defs/IsoDateTime"
+    },
+    "informationBlock": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
