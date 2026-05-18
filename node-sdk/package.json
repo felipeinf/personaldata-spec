@@ -1,9 +1,44 @@
 {
   "name": "@personaldata/sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Node.js SDK for consent traceability under Chile Law 21.719",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://github.com/felipeinf/personaldata-sdk",
+  "bugs": {
+    "url": "https://github.com/felipeinf/personaldata-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeinf/personaldata-sdk.git",
+    "directory": "node-sdk"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "personaldata",
+    "consent",
+    "consent-management",
+    "consent-record",
+    "consent-traceability",
+    "audit-trail",
+    "hash-chain",
+    "immutable-log",
+    "data-protection",
+    "personal-data",
+    "privacy-compliance",
+    "compliance",
+    "ley-21719",
+    "ley21719",
+    "chile",
+    "chilean-privacy-law",
+    "data-subject",
+    "json-schema",
+    "typescript",
+    "nodejs",
+    "sdk"
+  ],
   "engines": {
     "node": ">=20"
   },
@@ -38,15 +73,16 @@
     "generate:schemas": "tsx scripts/generate-schemas.ts",
     "generate": "npm run generate:types && npm run generate:schemas",
     "build": "tsup",
+    "prepublishOnly": "npm run build",
     "test": "vitest run",
     "lint": "biome check src tests scripts"
   },
   "dependencies": {
-    "@personaldata/spec": "file:../spec",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1"
   },
   "devDependencies": {
+    "@personaldata/spec": "file:../spec",
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.10.2",
     "json-schema-to-typescript": "^15.0.3",
