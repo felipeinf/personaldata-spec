@@ -7,18 +7,11 @@ This package does **not** store personal data or provide legal advice. You choos
 ## Requirements
 
 - Node.js 20+
-- `@personaldata/spec` (declared as a dependency)
 
 ## Install
 
 ```bash
 npm install @personaldata/sdk
-```
-
-In this monorepo workspace:
-
-```bash
-cd node-sdk && npm install && npm run generate && npm run build
 ```
 
 ## Quickstart
